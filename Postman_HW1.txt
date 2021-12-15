@@ -1,0 +1,128 @@
+HW_1
+
+Создать запросы в Postman.
+
+Protocol: http
+IP: 162.55.220.72
+Port: 5005
+
+EP_1
+Method: GET
+EndPoint: /get_method
+request url params: 
+ name: Koko
+ age: 25
+
+response: 
+[
+    "Koko",
+    "25"
+]
+
+==================
+
+EP_2
+Method: POST
+EndPoint: /user_info_3
+request form data: 
+ name: Nikol
+ age: 40
+ salary: 500
+
+response: 
+{"age": "40",
+    "family": {
+        "children": [
+            ["Alex", 24], ["Kate", 12]],
+        "u_salary_1_5_year": 2000},
+    "name": "Nikol", "salary": 500}
+
+==================
+
+EP_3
+Method: GET
+EndPoint: /object_info_1
+request url params: 
+ name: Nikol
+ age: 40
+ weight: 45
+
+response: 
+{
+    "age": 40,
+    "daily_food": 0.54,
+    "daily_sleep": 112.5,
+    "name": "Nikol"
+}
+
+==================
+
+EP_4
+Method: GET
+EndPoint: /object_info_2
+request url params: 
+ name: Vasyl
+ age: 35
+ salary: 800
+
+response: 
+{"person": {"u_age": 35,
+    "u_name": ["Vasyl", 800, 35],
+    "u_salary_5_years": 3360.0},
+    "qa_salary_after_1.5_year": 2640.0,
+    "qa_salary_after_12_months": 2160.0,
+    "qa_salary_after_3.5_years": 3040.0,
+    "qa_salary_after_6_months": 1600,
+    "start_qa_salary": 800}
+
+==================
+
+EP_5
+Method: GET
+EndPoint: /object_info_3
+request url params: 
+ name: David
+ age: 28
+ salary: 700
+
+response: 
+{"age": "28", "family": {
+   "children": [["Alex", 24], ["Kate", 12]],
+   "pets": {"cat": {"age": 3, "name": "Sunny"}, 
+   "dog": {"age": 4,"name": "Luky"}},
+   "u_salary_1_5_year": 2800},
+   "name": "David", "salary": 700}
+
+==================
+
+EP_6
+Method: GET
+EndPoint: /object_info_4
+request url params: 
+ name: Rustem
+ age: 44
+ salary: 1500
+
+response: 
+{"age": 44,
+ "name": "Rustem",
+ "salary": [1500, "3000", "4500"]}
+
+==================
+
+EP_7
+Method: POST
+EndPoint: /user_info_2
+request form data: 
+ name:David
+ age: 35
+ salary: 650
+
+response: 
+{"person": {"u_age": 35, "u_name": ["David", 650, 35],
+  "u_salary_5_years": 2730.0},
+    "qa_salary_after_1.5_year": 2145.0,
+    "qa_salary_after_12_months": 1755.0000000000002,
+    "qa_salary_after_3.5_years": 2470.0,
+    "qa_salary_after_6_months": 1300,
+    "start_qa_salary": 650}

@@ -1,0 +1,142 @@
+{
+	"info": {
+		"_postman_id": "1c8b2f57-f6e2-40af-aa64-555d7041ae99",
+		"name": "HW_2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "first",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"This is the first responce from server!\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "http://162.55.220.72:5005/first",
+					"protocol": "http",
+					"host": [
+						"162",
+						"55",
+						"220",
+						"72"
+					],
+					"port": "5005",
+					"path": [
+						"first"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user_info_3",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var resp_data = pm.response.json();\r",
+							"\r",
+							"var req_data = request.data;\r",
+							"\r",
+							"pm.test(\"Your name Zulia?\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(resp_data.name).to.eql(\"Zulia\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Your age 25?\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(resp_data.age).to.eql(\"25\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Your salary 800?\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(resp_data.salary).to.eql(800);\r",
+							"});\r",
+							"\r",
+							"pm.request.url.query.toObject();\r",
+							"\r",
+							"pm.test (\"Your request name = response name?\", function () {\r",
+							"pm.expect(req_data.name).to.eql(resp_data.name);\r",
+							"});\r",
+							"\r",
+							"pm.test (\"Your request age = response age?\", function () {\r",
+							"pm.expect(req_data.age).to.eql(resp_data.age);\r",
+							"});\r",
+							"\r",
+							"pm.test (\"Your request salary = response salary?\", function () {\r",
+							"pm.expect(parseInt.salary).to.eql(parseInt.salary);\r",
+							"});\r",
+							"\r",
+							"console.log(resp_data.family);\r",
+							"\r",
+							"pm.test(\"Does response u_salary_1_5_year = salary*4 request?\", function () {\r",
+							"pm.expect(resp_data.family.u_salary_1_5_year).to.eql((req_data.salary)*4);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Zulia",
+							"type": "text"
+						},
+						{
+							"key": "age",
+							"value": "25",
+							"type": "text"
+						},
+						{
+							"key": "salary",
+							"value": "800",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://162.55.220.72:5005/user_info_3",
+					"protocol": "http",
+					"host": [
+						"162",
+						"55",
+						"220",
+						"72"
+					],
+					"port": "5005",
+					"path": [
+						"user_info_3"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -228,6 +228,115 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "object_info_4",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"var resp_data = pm.response.json();\r",
+							"\r",
+							"pm.req_data = pm.request.url.query.toObject();\r",
+							"\r",
+							"pm.test (\"Your response name = request name?\", function (){\r",
+							"pm.expect(resp_data.name).to.eql(\"Rustem\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Does response age = request age?\", function(){\r",
+							"pm.expect(resp_data.age).to.eql(44);\r",
+							"});\r",
+							"\r",
+							"var req_data = pm.request.url.query.toObject();\r",
+							"\r",
+							"pm.test(\"Show request salary in console log\", function () {\r",
+							"console.log('Request salary = '+ req_data.salary);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Show response salary in console log\", function () {\r",
+							"console.log('Response salary = '+ resp_data.salary);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Show response salary[0] in console log\", function () {\r",
+							"console.log('Response salary[0] = '+ resp_data.salary[0])\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Show response salary[1] in console log\", function () {\r",
+							"console.log('Response salary[1] = '+ resp_data.salary[1])\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Show response salary[2] in console log\", function () {\r",
+							"console.log('Response salary[2] = '+resp_data.salary[2])\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Your response salary[0]= request salary\", function () {\r",
+							"pm.expect(resp_data.salary[0]).to.eql(+req_data.salary);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Your response salary[1] = request salary x 2?\", function () {\r",
+							"pm.expect(+resp_data.salary[1]).to.eql(req_data.salary * 2);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Your response salary[2] = request salary x 3?\", function () {\r",
+							"pm.expect(+resp_data.salary[2]).to.eql(req_data.salary * 3);\r",
+							"});\r",
+							"\r",
+							"pm.environment.set(\"name\", resp_data.name);\r",
+							"\r",
+							"pm.environment.set(\"age\", resp_data.age);\r",
+							"\r",
+							"pm.environment.set(\"salary\", resp_data.salary);\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "http://162.55.220.72:5005/object_info_4?name=Rustem&age=44&salary=1500",
+					"protocol": "http",
+					"host": [
+						"162",
+						"55",
+						"220",
+						"72"
+					],
+					"port": "5005",
+					"path": [
+						"object_info_4"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Rustem"
+						},
+						{
+							"key": "age",
+							"value": "44"
+						},
+						{
+							"key": "salary",
+							"value": "1500"
+						}
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }

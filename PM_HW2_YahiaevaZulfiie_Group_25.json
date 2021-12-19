@@ -237,7 +237,10 @@
 							"});\r",
 							"pm.environment.set(\"name\", resp_data.name);\r",
 							"pm.environment.set(\"age\", resp_data.age);\r",
-							"pm.environment.set(\"salary\", resp_data.salary);"
+							"pm.environment.set(\"salary\", resp_data.salary);\r",
+							"for(let sal in resp_data.salary) {\r",
+							"console.log(\"salary\"+ sal+ \"=\" + resp_data.salary[sal]);}\r",
+							"    "
 						],
 						"type": "text/javascript"
 					}

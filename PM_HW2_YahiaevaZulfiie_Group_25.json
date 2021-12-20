@@ -239,8 +239,7 @@
 							"pm.environment.set(\"age\", resp_data.age);\r",
 							"pm.environment.set(\"salary\", resp_data.salary);\r",
 							"for(let sal in resp_data.salary) {\r",
-							"console.log(\"salary\"+ sal+ \"=\" + resp_data.salary[sal]);}\r",
-							"    "
+							"console.log(\"salary\"+ sal+ \"=\" + resp_data.salary[sal]);}"
 						],
 						"type": "text/javascript"
 					}
@@ -282,6 +281,136 @@
 							"key": "salary",
 							"value": "1500"
 						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user_info_2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200); });\r",
+							"var resp_data=pm.response.json();\r",
+							"var req_data=request.data;\r",
+							"pm.test(\"Param = start_qa_salary\", function () {\r",
+							"pm.expect(resp_data).to.have.property(\"start_qa_salary\")});\r",
+							"pm.test(\"Does qa_salary_after_6_months exist?\", function () {\r",
+							"pm.expect(resp_data.qa_salary_after_6_months).exist });\r",
+							"pm.test(\"Does qa_salary_after_12_months exist?\", function () {\r",
+							"pm.expect(resp_data.qa_salary_after_12_months).exist });\r",
+							"pm.test(\"Does qa_salary_after_1.5_year exist?\", function () {\r",
+							"pm.expect(\"resp_data.qa_salary_after_1.5_year\").exist });\r",
+							"pm.test(\"Does qa_salary_after_3.5_year exist\", function (){\r",
+							"pm.expect(\"resp_data.qa_salary_after0_3.5_year\").exist });\r",
+							"pm.test(\"Is param respons = person?\", function () {\r",
+							"pm.expect(resp_data).to.have.property(\"person\")});\r",
+							"pm.test(\"Does start_qa_salary = resp and req?\", function () {\r",
+							"pm.expect(resp_data[\"person\"][\"start_qa_salary\"]).to.eql(req_data.salory)});\r",
+							"pm.test(\"Does qa_salary_after_6_months = salary * 2?\", function () {\r",
+							"pm.expect(resp_data.qa_salary_after_6_months).to.eql(+req_data.salary*2)});\r",
+							"pm.test(\"Does qa_salary_after_12_months = salary * 2.7?\", function (){\r",
+							"pm.expect(resp_data.qa_salary_after_12_months).to.eql(+req_data.salary*2.7)});\r",
+							"pm.test(\"Does qa_salary_after_1.5_year = salary * 3.3?\", function () {\r",
+							"pm.expect(resp_data[\"qa_salary_after_1.5_year\"]).to.eql(+req_data.salary*3.3)});\r",
+							"pm.test(\"Does qa_salary_after_3.5_year = salary * 3.8?\", function () {\r",
+							"pm.expect(resp_data[\"qa_salary_after_3.5_year\"]).to.eql(+req_data.salary*3.8)});\r",
+							"pm.test(\"response person.u_name[1]=salary?\", function () {\r",
+							"pm.expect(resp_data.person.u_name[1]).to.eql(+req_data.salary);})\r",
+							"pm.test(\"response person.u_age=age?\", function () {\r",
+							"pm.expect(resp_data.person.u_age).to.eql(+req_data.age)});\r",
+							"pm.test(\"u_salary_5_years=salary*4.2?\", function () {\r",
+							"pm.expect(resp_data.person.u_salary_5_years).to.eql(req_data.salary*4.2)});\r",
+							"for(let key in resp_data.person){\r",
+							"console.log(key+\":\" +resp_data.person[key])};"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "{{name}}",
+							"type": "text"
+						},
+						{
+							"key": "age",
+							"value": "{{age}}",
+							"type": "text"
+						},
+						{
+							"key": "salary",
+							"value": "{{salary}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/user_info_2?name={{name}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"user_info_2"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "{{name}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "login",
+							"value": "Zulia",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "25f25f25f",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/login",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"login"
 					]
 				}
 			},
